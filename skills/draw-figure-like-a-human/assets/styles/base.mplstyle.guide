@@ -1,0 +1,152 @@
+# 可复用论文图表基础样式
+# Reusable paper-figure base style
+# =================================
+#
+# 本文件并不复刻某一张 DRIFT 图，而只保留参考 Notebook 中反复出现、可跨图复用的
+# 视觉特征：论文尺寸的字体、克制的灰色坐标轴、虚线网格、带边框图例、系列冗余编码
+# 以及适合矢量导出的设置。
+# This file does not reproduce any one DRIFT figure. It keeps only recurring,
+# transferable choices learned from the reference notebooks: paper-scale type,
+# restrained gray axes, dashed grids, framed legends, redundant series encoding,
+# and vector-friendly export settings.
+#
+# 下方每个未被注释的“key: value”都是原生 Matplotlib rcParam，因此本文件可以直接
+# 分享和加载：
+# Every uncommented "key: value" below is a native Matplotlib rcParam, so this
+# file can be shared and loaded directly:
+#
+#     plt.style.use("/path/to/base.mplstyle")
+#
+# 具体图表的选择不应写在这里。分面布局、坐标范围、标签、图例位置、柱分组、雷达图
+# 填充透明度、注释和数据转换应留在生成图表的 .ipynb 中。
+# Figure-specific decisions do not belong here. Put panel layout, axis limits,
+# labels, legend placement, bar grouping, radar fill alpha, annotations, and data
+# transformations in the .ipynb that creates the figure.
+#
+# 在真正的 .mplstyle 值中，十六进制颜色要省略开头的“#”，因为“#”在 Matplotlib
+# 样式文件语法中表示注释开始。
+# In real .mplstyle values, hexadecimal colors omit the leading "#" because "#"
+# begins a comment in Matplotlib's style-file syntax.
+
+# --- 画布 / Canvas ------------------------------------------------------------
+# 默认单栏论文画布，单位为英寸：宽、高。
+# Default single-column paper canvas in inches: width, height.
+figure.figsize: 3.35, 2.70
+# Notebook 交互显示分辨率；它不控制矢量输出。
+# Interactive Notebook display resolution; this does not control vector output.
+figure.dpi: 100
+# 使用常见的白色论文背景。
+# Match the usual white paper background.
+figure.facecolor: white
+# 自动为标签和图例预留空间。
+# Reserve space for labels and legends automatically.
+figure.constrained_layout.use: True
+
+# --- 字体排印 / Typography ----------------------------------------------------
+# 使用这个可移植无衬线字体回退列表中第一个已安装的字体。
+# Use the first installed font in this portable sans-serif fallback list.
+font.family: sans-serif
+font.sans-serif: Arial, Liberation Sans, DejaVu Sans
+# 在最终 3.35 英寸宽度下使用的基础字号，单位为磅。
+# Base text size in points at the final 3.35-inch width.
+font.size: 8.5
+# 当论文图注已提供标题时，通常省略坐标区域标题。
+# Axes titles are normally omitted when the paper caption supplies the title.
+axes.titlesize: 9.5
+# 坐标轴标签是图内最强的文字层级。
+# Axis labels form the strongest text level inside the plot.
+axes.labelsize: 10
+axes.labelweight: bold
+
+# --- 坐标轴 / Axes ------------------------------------------------------------
+# 保持绘图区为白色，并让边框比数据标记更克制。
+# Keep the plotting surface white and the frame quieter than the data marks.
+axes.facecolor: white
+axes.edgecolor: 8C8C8C
+axes.linewidth: 0.65
+# 将网格线放在数据标记后方。
+# Place gridlines behind plotted data.
+axes.axisbelow: True
+# 默认启用网格；Notebook 可按需要限制为 x 轴或 y 轴。
+# Enable a base grid; the Notebook may restrict it to x or y when appropriate.
+axes.grid: True
+# 保留参考图中反复出现的四边框坐标轴特征。
+# Retain the framed-axes characteristic found repeatedly in the references.
+axes.spines.top: True
+axes.spines.right: True
+
+# --- 可复用系列循环 / Reusable series cycle ----------------------------------
+# 每个系列同时获得颜色、marker 和线型。冗余编码有助于读者在灰度下区分系列，也支持
+# 同时展示多条折线。
+# Each series receives color + marker + line style. The redundant encoding helps
+# readers distinguish series in grayscale and supports several simultaneous lines.
+#
+# Marker 取值 / Marker values:
+#   v = 下三角 / downward triangle    o = 圆 / circle    s = 方块 / square
+#   ^ = 上三角 / upward triangle      D = 菱形 / diamond  X = 实心叉 / filled X
+#
+# 线型取值 / Line-style values:
+#   - = 实线 / solid                  -- = 虚线 / dashed
+#   -. = 点划线 / dash-dot            : = 点线 / dotted
+#
+# 这些颜色是从参考图中归纳出的常用分类色。组合 cycler 中的颜色、marker 和线型列表
+# 必须长度一致。
+# Colors are recurring categorical colors learned from the references. The color,
+# marker, and line-style lists must have the same length in a combined cycler.
+axes.prop_cycle: cycler(color=['0C84C6', '41B7AC', 'FFA510', 'F74D4D', '2455A4', '002C53']) + cycler(marker=['v', 'o', 's', '^', 'D', 'X']) + cycler(linestyle=['-', '--', '-.', ':', '-', '--'])
+
+# --- 刻度 / Ticks -------------------------------------------------------------
+# 刻度标签字号，单位为磅。
+# Tick-label size in points.
+xtick.labelsize: 8.5
+ytick.labelsize: 8.5
+# 短而细的主刻度可减少论文尺寸下的杂乱。
+# Short, thin major ticks avoid clutter at paper scale.
+xtick.major.size: 2
+ytick.major.size: 2
+xtick.major.width: 0.6
+ytick.major.width: 0.6
+
+# --- 线、marker 与色块 / Lines, markers, and patches --------------------------
+# 默认线宽和 marker 直径，单位为磅。
+# Default line width and marker diameter in points.
+lines.linewidth: 1.3
+lines.markersize: 4.2
+# 细白色边界用于分隔相邻柱或填充区域。
+# Thin white boundaries separate neighboring bars or filled regions.
+patch.linewidth: 0.65
+patch.edgecolor: white
+patch.force_edgecolor: True
+
+# --- 图例 / Legend ------------------------------------------------------------
+# 使用紧凑、易读、带浅色边框的白底图例。
+# Compact, readable legend with a light framed white background.
+legend.fontsize: 8.5
+legend.frameon: True
+legend.fancybox: True
+legend.framealpha: 0.96
+legend.edgecolor: A6A6A6
+legend.facecolor: white
+legend.handlelength: 1.7
+legend.handletextpad: 0.5
+legend.borderpad: 0.45
+
+# --- 网格 / Grid --------------------------------------------------------------
+# 浅灰色虚线网格帮助读取数值，同时不与数据标记竞争。
+# Light dashed gray gridlines support value lookup without competing with marks.
+grid.color: 9A9A9A
+grid.linestyle: --
+grid.linewidth: 0.5
+grid.alpha: 0.5
+
+# --- 导出 / Export ------------------------------------------------------------
+# PNG 预览使用 300 DPI；PDF 和 SVG 保持矢量格式。
+# PNG previews use 300 DPI; PDF and SVG remain vector outputs.
+savefig.dpi: 300
+savefig.facecolor: white
+savefig.transparent: False
+# 在 PDF/PS 中嵌入 TrueType 文字，并让 SVG 文字保持可编辑。
+# Embed TrueType text in PDF/PS and keep SVG text editable.
+pdf.fonttype: 42
+ps.fonttype: 42
+svg.fonttype: none

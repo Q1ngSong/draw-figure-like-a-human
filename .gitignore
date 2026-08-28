@@ -1,0 +1,8 @@
+draw-pics-like-a-human/
+test/
+workspace/
+skills/draw-figure-like-a-human-copy/
+skills/recommend-color-palette/
+.agents/
+
+*.pyc

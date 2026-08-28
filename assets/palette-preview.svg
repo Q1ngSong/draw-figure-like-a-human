@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#202124}.title{font-size:22px;font-weight:650}.meta{font-size:13px;fill:#5F6368}.hex{font-size:13px;font-weight:650}.small{font-size:12px;fill:#5F6368}</style>
+<text class="title" x="36" y="42">Local LCh Categorical Long Hue 5</text>
+<text class="meta" x="36" y="66">categorical · 5 colors · local-generator</text>
+<rect x="36.0" y="92" width="121.6" height="118" rx="8" fill="#D95F02"/>
+<text class="hex" x="96.8" y="158" text-anchor="middle" style="fill:#FFFFFF">#D95F02</text>
+<text class="small" x="96.8" y="230" text-anchor="middle">Ours</text>
+<rect x="167.6" y="92" width="121.6" height="118" rx="8" fill="#2166AC"/>
+<text class="hex" x="228.4" y="158" text-anchor="middle" style="fill:#FFFFFF">#2166AC</text>
+<text class="small" x="228.4" y="230" text-anchor="middle">Baseline A</text>
+<rect x="299.2" y="92" width="121.6" height="118" rx="8" fill="#007FA4"/>
+<text class="hex" x="360.0" y="158" text-anchor="middle" style="fill:#FFFFFF">#007FA4</text>
+<text class="small" x="360.0" y="230" text-anchor="middle">Baseline B</text>
+<rect x="430.8" y="92" width="121.6" height="118" rx="8" fill="#008A58"/>
+<text class="hex" x="491.6" y="158" text-anchor="middle" style="fill:#FFFFFF">#008A58</text>
+<text class="small" x="491.6" y="230" text-anchor="middle">Baseline C</text>
+<rect x="562.4" y="92" width="121.6" height="118" rx="8" fill="#6F8500"/>
+<text class="hex" x="623.2" y="158" text-anchor="middle" style="fill:#FFFFFF">#6F8500</text>
+<text class="small" x="623.2" y="230" text-anchor="middle">Baseline D</text>
+<text class="small" x="36" y="270">minimum contrast 3.76:1 · pairwise ΔE76 26.3 · deutan-like heuristic ΔE76 12.7</text>
+<text class="small" x="36" y="294">local:palette_cli.py</text>
+<text class="small" x="36" y="316">status: ok · verify in the rendered chart at final size</text>
+</svg>
